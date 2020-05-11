@@ -37,4 +37,8 @@ OMP_NUM_THREADS
 1. static: Divide into equal size chunks and schedule statically
 2. dynamic: Divide into equal size chunks and schedule dynamically
 3. guided:Divideinto(number_of_iterations_remaining/number_of_threads) 4. runtime:Decisionisdeferreduntilruntime(UseOMP_SCHEDULE)
-5. auto: Decision is delegated to the compiler and runtime
+5. auto: Decision is delegated to the compiler and runtime  
+**注意只有在不同线程中的使用的变量是相互独立的才能正确并行化，相互有影响的，例如```a[i] = a[i] + a[i + 1]```这样的，由于不知道循环并行化以后不知道切割点在哪，就会导致最终结果与线性执行有区别
+## 变量范围
+在并行范围（parallel region）外声明的变量在并行范围内默认是共享的， 使用thread
+在并行范围内声明的变量只影响范围内，就算名称和外部有重复，也不会形成拷贝，具体有代码04_variablesScope.cpp
