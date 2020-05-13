@@ -48,7 +48,8 @@ OMP_NUM_THREADS
 ||private|firstprivate|lastprivate|threadprivate|
 |----|:----:|:----:|:----:|:----:|
 |copy in|N(uninitialized)|Y|N(uninitialized)||
-|copy out|N|N|Y||
+|copy out|N|N|Y||  
+
 这里有一篇好的[Blog](https://blog.csdn.net/gengshenghong/article/details/6985431)可以参考，讨论了这些private的范围问题  
 
 ## 并行的三种方式
