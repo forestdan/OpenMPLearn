@@ -86,3 +86,13 @@ taskwait：等待所有子任务的完成
 barrier：等待所有任务的完成
 
 ## 聚集
+```c++
+#pragma omp [parallel for] reduction(+ : a)
+// parallelized body
+```
+将所有并行的线程的a的结果以"和"的方式聚集
+## 原子更新
+```c++
+#pragma omp atomic update
+// the shared space update body
+```
